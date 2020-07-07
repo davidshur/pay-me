@@ -49,11 +49,11 @@ class App extends Component {
     });
   };
 
-  deleteFromDb = idToDelete => {
-    parseInt(idToDelete);
+  deleteFromDb = (idToDelete) => {
     let objIdToDelete = null;
+    let intId = parseInt(idToDelete);
     this.state.data.forEach(item => {
-      if (item.id === idToDelete) {
+      if (item.id === intId) {
         objIdToDelete = item._id;
       }
     });
@@ -67,14 +67,14 @@ class App extends Component {
 
   updateDb = (idToUpdate, updateToApply) => {
     let objIdToUpdate = null;
-    parseInt(idToUpdate);
+    let intId = parseInt(idToUpdate);
     this.state.data.forEach(item => {
-      if (item.id === idToUpdate) {
+      if (item.id === intId) {
         objIdToUpdate = item._id;
       }
     });
 
-    axios.post('http://localhost3001/api/updateData', {
+    axios.post('http://localhost:3001/api/updateData', {
       id: objIdToUpdate,
       update: { message: updateToApply }
     });
@@ -88,7 +88,7 @@ class App extends Component {
           {data.length <= 0
             ? 'No DB entries yet...'
             : data.map(item => (
-              <li style={{ padding: '10px' }} key={data.message}>
+              <li style={{ padding: '10px' }} key={item.id}>
                 <span style={{ color: 'grey' }}> ID: </span> {item.id} <br />
                 <span style={{ color: 'grey' }}> Message: </span> {item.message}
               </li>
