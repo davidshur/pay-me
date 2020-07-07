@@ -53,7 +53,7 @@ class App extends Component {
     parseInt(idToDelete);
     let objIdToDelete = null;
     this.state.data.forEach(item => {
-      if (item.id == idToDelete) {
+      if (item.id === idToDelete) {
         objIdToDelete = item._id;
       }
     });
@@ -69,7 +69,7 @@ class App extends Component {
     let objIdToUpdate = null;
     parseInt(idToUpdate);
     this.state.data.forEach(item => {
-      if (item.id == idToUpdate) {
+      if (item.id === idToUpdate) {
         objIdToUpdate = item._id;
       }
     });
@@ -81,8 +81,69 @@ class App extends Component {
   };
 
   render() {
+    const { data } = this.state;
     return (
-      <p>Ready to use my backend!</p>
+      <div>
+        <ul>
+          {data.length <= 0
+            ? 'No DB entries yet...'
+            : data.map(item => (
+              <li style={{ padding: '10px' }} key={data.message}>
+                <span style={{ color: 'grey' }}> ID: </span> {item.id} <br />
+                <span style={{ color: 'grey' }}> Message: </span> {item.message}
+              </li>
+            ))}
+        </ul>
+        <div style={{ padding: '10px' }}>
+          <input
+            type="text"
+            onChange={event => this.setState({ message: event.target.value})}
+            placeholder="Say something..."
+            style={{ width: '200px' }}
+          />
+          <button onClick={() => this.putDataToDb(this.state.message)}>
+            ADD
+          </button>
+        </div>
+        <div style={{ padding: '10px'}}>
+          <input
+            type="text"
+            style={{ width: '200px' }}
+            onChange={event =>
+              this.setState({ idToDelete: event.target.value })
+            }
+            placeholder="ID of item to delete..."
+          />
+          <button onClick={() => this.deleteFromDb(this.state.idToDelete)}>
+            DELETE
+          </button>
+        </div>
+        <div style={{ padding: '10px' }}>
+          <input
+            type="text"
+            style={{ width: '200px'}}
+            onChange={event =>
+              this.setState({ idToUpdate: event.target.value })
+            }
+            placeholder="ID of item to update..."
+          />
+          <input
+            type="text"
+            style={{ width: '200px'}}
+            onChange={event =>
+              this.setState({ updateToApply: event.target.value })
+            }
+            placeholder="Updated message..."
+          />
+          <button
+            onClick={() =>
+              this.updateDb(this.state.idToUpdate, this.state.updateToApply)
+            }
+          >
+            UPDATE
+          </button>
+        </div>
+      </div>
     );
   };
 };
