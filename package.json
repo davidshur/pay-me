@@ -2,11 +2,11 @@
   "name": "pay-me",
   "version": "1.0.0",
   "description": "MERN SaaS Application",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "app": "nodemon app.js"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "David Shur",
   "license": "MIT",
