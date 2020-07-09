@@ -2,7 +2,7 @@
   "name": "pay-me",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\"",
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/davidshur/pay-me.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Shur",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/davidshur/pay-me/issues"

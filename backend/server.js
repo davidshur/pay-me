@@ -69,6 +69,8 @@ router.post('/putData', (req, res) => {
   });
 });
 
+app.use(express.static('client/build'));
+
 // Append /api on API requests...
 app.use('/api', router);
 
