@@ -72,8 +72,8 @@ router.post('/putData', (req, res) => {
 // Append /api on API requests...
 app.use('/api', router);
 
-app.get('/', (req, res) => {
-  res.send('Hello world!');
+router.use(function(req, res) {
+	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 app.listen(port, () => console.log(`Process running on port ${port}!`));
