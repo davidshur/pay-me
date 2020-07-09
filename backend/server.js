@@ -14,7 +14,8 @@ const router = express.Router();
 const mongoURI = process.env.MONGO_URI;
 mongoose.connect(mongoURI, {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useFindAndModify: false
 });
 
 let db = mongoose.connection;
