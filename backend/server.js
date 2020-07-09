@@ -9,6 +9,7 @@ require('dotenv').config();
 const port = process.env.PORT || 3001;
 const app = express();
 app.use(cors());
+app.use(express.static('client/build'));
 const router = express.Router();
 
 const mongoURI = process.env.MONGO_URI;
@@ -69,8 +70,6 @@ router.post('/putData', (req, res) => {
     return res.json({ success: true });
   });
 });
-
-app.use(express.static('client/build'));
 
 // Append /api on API requests...
 app.use('/api', router);
